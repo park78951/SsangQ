@@ -6,25 +6,37 @@ module.exports = {
     url: 'https://lumen.netlify.com',
     title: 'Blog by Q',
     subtitle:
-      "As a beginner of front-end developer, blog for oraganization of what I've learned.",
+      "A beginner of front-end developer\nWhat I've learend and thought",
     copyright: '© All rights reserved.',
     disqusShortname: '',
     menu: [
       {
-        label: 'Articles',
+        label: 'All Posts',
         path: '/',
       },
       {
-        label: 'About me',
-        path: '/about/',
+        label: 'Javascript',
+        path: '/categories/javascript',
       },
       {
-        label: 'Contact me',
+        label: 'Web',
+        path: '/categories/web',
+      },
+      {
+        label: 'CS',
+        path: '/categories/cs',
+      },
+      {
+        label: 'The others',
+        path: '/categories/the_others',
+      },
+      {
+        label: 'About me',
         path: '/contact/',
       },
     ],
     author: {
-      name: 'John Doe',
+      name: 'Q',
       email: '#',
       telegram: '#',
       twitter: '#',
