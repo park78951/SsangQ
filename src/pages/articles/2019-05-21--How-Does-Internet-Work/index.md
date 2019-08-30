@@ -4,7 +4,7 @@ date: "2019-05-21T20:24:00.000Z"
 layout: post
 draft: false
 path: "/posts/how-does-internet-work/"
-category: "web"
+category: "WEB"
 tags:
   - "Internet"
   - "Router"

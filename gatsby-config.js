@@ -11,15 +11,19 @@ module.exports = {
     disqusShortname: '',
     menu: [
       {
-        label: 'All Posts',
+        label: 'All POSTS',
         path: '/',
       },
       {
-        label: 'Javascript',
+        label: 'HTML-CSS',
+        path: '/categories/html-css',
+      },
+      {
+        label: 'JAVASCRIPT',
         path: '/categories/javascript',
       },
       {
-        label: 'Web',
+        label: 'WEB',
         path: '/categories/web',
       },
       {
@@ -27,13 +31,13 @@ module.exports = {
         path: '/categories/cs',
       },
       {
-        label: 'The others',
+        label: 'THE OTHERS',
         path: '/categories/the_others',
       },
-      {
-        label: 'About me',
-        path: '/contact/',
-      },
+      // {
+      //   label: 'About me',
+      //   path: '/about/',
+      // },
     ],
     author: {
       name: 'Q',

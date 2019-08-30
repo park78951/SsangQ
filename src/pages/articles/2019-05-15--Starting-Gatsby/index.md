@@ -4,7 +4,7 @@ date: "2019-05-15T15:00:00.000Z"
 layout: post
 draft: false
 path: "/posts/starting-gatsby/"
-category: "The others"
+category: "THE OTHERS"
 tags:
   - "Gatsby"
   - "Web Development"
@@ -111,3 +111,9 @@ Gatsby를 설치하면 먼저 처음 화면은 아래처럼 나올것이다.
           - description: 게시물에 보이는 제목 밑의 작은 글씨<br>
 
 여기까지가 일단 알게된 정보들이고 이정도면 시작하는데 문제는 없을 것이다. 추후 더 알게되는 정보가 있으면 업데이트 하겠다.
+
+---
+
+### 추가 업데이트 사항
+
+Netlify를 사용하여 배포할 경우, gatsby 블로그 lumne을 npm으로 깔았다면 Netlify 배포 작업 중 오류를 확인 할 수 있다고 한다. Netlify는 yarn 기반이기 때문에 가급적이면 yarn으로 설치하길 권장한다.
