@@ -19,6 +19,9 @@
         @include margin-bottom(0);
     }
     &__body {
+        & h2, h3, h4 {
+            font-weight: bold;
+        }
         & figure {
             @include margin-bottom(1);
             & blockquote {
