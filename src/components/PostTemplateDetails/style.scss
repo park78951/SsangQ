@@ -19,7 +19,7 @@
         @include margin-bottom(0);
     }
     &__body {
-        & h2, h3, h4 {
+        & h1, h2, h3, h4 {
             font-weight: bold;
         }
         & figure {
@@ -28,6 +28,7 @@
                 font-style: italic;
                 text-align: center;
                 margin-top: 0;
+                font-weight: bold;
                 @include padding(1, 0);
                 & p {
                     max-width: $layout-post-single-width;

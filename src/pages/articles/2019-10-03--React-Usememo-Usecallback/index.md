@@ -1,6 +1,6 @@
 ---
 title: React 최적화, useMemo, useCallback, React.memo
-date: '2019-10-22T21:12:22.000Z'
+date: '2019-10-03T21:12:22.000Z'
 layout: post
 draft: false
 path: '/posts/react-memo-useMemo-useCallback/'
@@ -19,13 +19,13 @@ description: React Todo Web Application을 만들면서 시도해봤던 최적�
 
 React 최적화를 공부하면서 `useMemo, useCallback, React.memo`를 접했다. `useMemo`와 `useCallback`은 실제로 Todo Application에 적용해 봤지만, 일단 최적화 시도를 위한 API 사용을 해본 것일 뿐 정확하게 어떻게 최적화가 되는지에 대해서는 알지 못했다. 이번 기회에 `useMemo`와 `useCallback, React.mem`o가 어떻게 최적화가 되는지 학습하여 정리하려고 한다.
 
-## 최적화에 사용되는 Memoization
+# 최적화에 사용되는 Memoization
 
 Memoization이란 `이전 값을 메모리에 저장해 동일한 계산의 반복을 제거해 빠른 처리를 가능하게 하는 기술` 이라고 한다. useMemo, useCallback, React.memo는 모두 이 `Memoization`을 기반으로 작동한다. 그럼 이 `Memoization`이 어떻게 사용되는지 확인해보자.
 
-## React.memo
+# React.memo
 
-### React.memo의 특징과 사용
+## React.memo의 특징과 사용
 
 ```
 const Welcome = ({ name }) => {
@@ -39,9 +39,9 @@ React.memo는 일반적으로 위와 같이 사용되며 직접 함수를 감싸
 
 React.memo가 props나 props의 객체를 비교할 때 얕은 비교를 진행하는데, 얕은 비교란 원시 값의 경우는 같은 값을 갖는지 확인하고 객체나 배열과 같은 참조 값은 같은 주소 값을 갖고 있는지 확인한다.
 
-React.memo 메서드는 ```React.memo(component, compFunc)```와 같은 형태가 기본 형태인데, `compFunc` 부분에는 내가 수동으로 비교방식을 수정할 수 있다. 하지만 사용해보지는 않았다.
+React.memo 메서드는 `React.memo(component, compFunc)`와 같은 형태가 기본 형태인데, `compFunc` 부분에는 내가 수동으로 비교방식을 수정할 수 있다. 하지만 사용해보지는 않았다.
 
-### React.memo를 언제 써야 할까?
+## React.memo를 언제 써야 할까?
 이러한 React 최적화 방식들을 공부하면서 접했던 내용은 React.memo의 내부 동작 원리보다는 무조건 적인 사용을 지양하라는 것이었다. 그 이유는 최적화를 위한 연산이 불필요한 경우엔 비용만 발생시키기 때문이다. React.memo는 다음과 같은 상황에서 사용을 권장한다.
 
 1. Pure Functional Component에서
@@ -51,11 +51,11 @@ React.memo 메서드는 ```React.memo(component, compFunc)```와 같은 형태�
 
 일반적으로 불필요한 Render가 많이 발생하는 곳에서 사용하라는 말과 같다. 개인적으로 Todo Web application을 진행하면서 부모 컴포넌트가 자주 rendering될 때마다 자식 컴포넌트가 쓸데없이 함께 렌더링 되는 경우를 겪은 적이 있는데, 이 때 React.memo를 사용해 rendering을 막은 것을 React dev tool로 확인했던 것이 기억에 남는다.
 
-### React.memo를 사용하지 말아야 할 경우는?
+## React.memo를 사용하지 말아야 할 경우는?
 
 위의 경우를 제외하면 사용하지 않는 것을 권장하지만, 일반적으로 class 기반의 컴포넌트를 래핑하는 것도 적절하지 않은 사용으로 설명된다. 이 경우 memoization을 해야겠다면, PureComponent를 확장하여 사용하거나 `shouldComponentUpdate()`를 사용하길 권장하고있다.
 
-### React.memo의 주의 사항 - 부모가 전달하는 callback 함수
+## React.memo의 주의 사항 - 부모가 전달하는 callback 함수
 
 ```
 function MyApp({ store, cookies }) {
@@ -88,7 +88,7 @@ function MyApp({ store, cookies }) {
 ```
 항상 같은 함수 인스턴스를 반환하기 때문에 MemoizedLogout의 React.memo가 정상 기능을 수행한다.
 
-## useMemo & useCallback
+# useMemo & useCallback
 
 **useMemo**는? 사용방법을 제외하고는 React.memo와 매우 흡사하다. React.memo가 component의 결과 값을 memoized하여 불필요한 re-rendering을 관리한다면, useMemo는 함수의 결과 값을 memoized하여 불필요한 연산을 관리한다. 아래 코드를 보자.
 
@@ -107,7 +107,7 @@ const handleChange = useCallback(e => {
 ```
 useCallback을 통해 memoized된 함수는 예를 들어 event handler로 사용되며, 마찬가지로 2번째 인자가 변경될 때마다 함수가 다시 memoized된다.
 
-### useCallback의 예시
+## useCallback의 예시
 
 *useCallback 사용 전*
 ```
@@ -148,14 +148,18 @@ function DualCounter() {
 ```
 useCallback을 사용하여 count1이나 count2 둘 중 하나의 state만 변경되었음에도 2개의 CountButton이 re-rendering되는 것을 막아 최적화를 이뤘다.
 
-## 최적화에 대한 생각
+# 최적화에 대한 생각
 실제로 React Dev Tools를 통해 불필요한 re-rendering을 막는 것을 보니 굉장히 유용한 API라는 생각과 함께 적극적으로 사용해야겠다고 생각한다. 하지만, 아직 React에 대한 숙련도가 높지 않은 만큼 높은 레벨의 기술일 수록 더욱 신중하고 조심히 써야한다고 생각한다. 위에 정리했던 대로 최적화를 위한 코드가 잘못 사용되면 부담을 가중시키는 코드로 변질될 수 있으니, 앞으로 원리를 더 이해하고 경험을 쌓아가며 좋은 코드를 작성하기 위한 고민을 해야겠다.
 
 
 
-## 도움받은 블로그
+# 도움받은 블로그
 
-[TOAST UI](https://ui.toast.com/weekly-pick/ko_20190731/)
-[Kent C. Dodds](https://kentcdodds.com/blog/usememo-and-usecallback)
+[TOAST UI](https://ui.toast.com/weekly-pick/ko_20190731/)  
+[Kent C. Dodds](https://kentcdodds.com/blog/usememo-and-usecallback)  
+
+___
+
+> 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 
 ---

@@ -22,7 +22,7 @@ description: 완전 초창기에 개념 없이 배웠던 Map과 Set을 다시 �
 
 사실 코딩을 하면서 Map과 Set을 사용했던 적은 최근검색 UI를 만들때 중복된 배열의 요소를 없애기 위해 사용해본 적 외엔 제대로 사용해 본 적이 없다. 하지만 공부를 할 수록 '활용도가 꽤나 크겠다'라는 생각을 갖게 되어서 이를 문서화 시켜 머릿속에서 잊어버릴 때쯤 상기하자는 마음으로 이렇게 정리하기로 했다. 겸사겸사 면접 연습도 될 것 같다는 1+1의 이점도 있겠다..
 
-## Map
+# Map
 
 Map의 특징을 일단 정리하자면,
 1. Map은 Object와 상당히 유사한 순회 가능한 객체이다.
@@ -38,7 +38,7 @@ Map의 특징을 일단 정리하자면,
 
 사실 객체를 사용한다면 굳이 사용할 일이 많지 않겠구나 라는 생각은 변함이 없지만, Map이 **key값을 사용해 property를 delete하는 경우**, **key값에 대한 정렬**, **굉장히 큰 양의 데이터를 저장한 경우**에서 더 좋은 performance를 낸다고 한다. 앞으로 프로젝트를 진행하면서, 또는 현업에서 일하면서 그 사용 사례나 필요성을 고민해봐야겠다.
 
-## Set
+# Set
 
 Set의 특징을 정리해보자면,
 1. 배열과 유사한 순회 가능한 객체이다.
@@ -56,21 +56,22 @@ set.values() //return {'a', 'b', 'c'}
 
 Set은 확실히 Map보다는 활용도가 높다고 생각했다. 최근 검색 UI를 만들 때, 최근검색 기록에 있는 기존 검색어를 재 입력했을 경우 Set을 사용해 처리한 적이 있다. 이 때, 복잡한 코드 및 알고리즘을 쓰지 않고 단 한 줄만으로 해결해 굉장히 유용했던 적이 있는데, 현업에서도 많이 쓰인다하니 항상 머릿속에 두고 활용할 곳을 찾아봐야겠다.
 
-## WeakMap, WeackSet
+# WeakMap, WeackSet
 
 대부분 사용하지 않거나 활용된 곳을 찾기 힘들다고 한다. 각각 Map과 Set의 기능과 공통된 부분이 많으나 다른 부분을 정리하자면,
 1. Map의 key에 해당하는 값과 Set의 값은 오로지 객체만 받을 수 있다.
-2. 자동적으로 Garbage Collection을 하여 사용하지 않는 참조는 모두 삭제된다. 
+2. 자동적으로 Garbage Collection을 하여 사용하지 않는 참조는 모두 삭제된다.
+
 ```
 const weakSet = new WeakSet([{a: 'a'}]);
 weakSet // return WeakSet {} : 참조가 없어 Garbage Collection 됨.
-
 ```
 
-## Advanced Utilization
+# Advanced Utilization
 
 위에 언급하지는 않았지만, Map과 Set 모두 entries라는 메소드로 모든 iterator 객체를 차례대로 순회할 수 있다.
 Set을 예로 들자면, 
+
 ```
 const set = new Set(['a', 'b']); // return {"a", "b"}
 const setEnt = set.entries(); // return SetIterator 
@@ -83,11 +84,15 @@ setEnt.next() // {value: undefined, done: true}
 
 또는 spread연산자로 배열화하여 배열 메서드를 활용해 Set함수간의 교집합, 차집합 등을 계산 할 수 있어 이러한 방식도 공부해보고 사용하면 좋을 것 같다.
 
-## 도움받은 블로그
-[코드버스트](https://codeburst.io/array-vs-set-vs-map-vs-object-real-time-use-cases-in-javascript-es6-47ee3295329b)
-[Kevin Seaokyou Hong](https://medium.com/@hongkevin/js-5-es6-map-set-2a9ebf40f96b)
-[Maya shavin](https://medium.com/front-end-weekly/es6-map-vs-object-what-and-when-b80621932373)
+# 도움받은 블로그
+[코드버스트](https://codeburst.io/array-vs-set-vs-map-vs-object-real-time-use-cases-in-javascript-es6-47ee3295329b)  
+[Kevin Seaokyou Hong](https://medium.com/@hongkevin/js-5-es6-map-set-2a9ebf40f96b)  
+[Maya shavin](https://medium.com/front-end-weekly/es6-map-vs-object-what-and-when-b80621932373)  
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map#%EC%84%A4%EB%AA%85)
+
+___
+
+> 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 
 
 ---

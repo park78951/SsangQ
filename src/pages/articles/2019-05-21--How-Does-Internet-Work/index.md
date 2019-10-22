@@ -15,7 +15,7 @@ description: "인터넷이 작동하기 위한 하드웨어 및 네트워크 구
 ---
 HTTP를 공부하면서 Router 용어를 듣는 순간 기존에 궁금했던 Router의 역할, 허브 또는 스위치의 역할, 이들의 연결관계에 대한 궁금증을 간단하게나마 짚고 넘어가고 싶었다. 함께 공부하는 Jake와 Papico의 설명을 발판으로 삼아 공부한 내용을 정리해보겠다.
 
-## 간단한 작동원리
+# 간단한 작동원리
 
 ![internet_works](internet-schema-5.png)
 
@@ -25,7 +25,7 @@ HTTP를 공부하면서 Router 용어를 듣는 순간 기존에 궁금했던 Ro
 4. Router에서 데이터를 전송함에 있어 가장 빠른 경로를 검색하여 데이터 전송.
 
 
-## 용어 정리
+# 용어 정리
 
 1. Router
 
@@ -52,9 +52,14 @@ HTTP를 공부하면서 Router 용어를 듣는 순간 기존에 궁금했던 Ro
     - 자신에게 연결된 디바이스의 IP와 MAC 주소를 테이블로 갖고 있어 패킷이 전송되면 목적지를 파악하고 빠르게 해당 목적지로 전달함. (허브와의 차이점)
     - 테이블에 없는 목적지를 가진 패킷이 오면 허브와 같이 모든 장치에 포워딩함.
 
----
-#### 참고 사이트
-[MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work)<br>
-[집사 강가이버](https://kkdww.tistory.com/151) <br>
-[이글루스](http://egloos.zum.com/oxteen/v/5458427)<br>
+# 참고 사이트
+[MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work)  
+[집사 강가이버](https://kkdww.tistory.com/151)  
+[이글루스](http://egloos.zum.com/oxteen/v/5458427)  
 [완블로그](https://minwan1.github.io/2018/10/01/2018-09-03-network-network-divice/)
+
+___
+
+> 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
+
+---
