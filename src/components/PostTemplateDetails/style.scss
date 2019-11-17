@@ -22,23 +22,25 @@
         & h1, h2, h3, h4 {
             font-weight: bold;
         }
-        & figure {
+        // & figure {
             @include margin-bottom(1);
-            & blockquote {
+            & > blockquote {
                 font-style: italic;
                 text-align: center;
                 margin-top: 0;
                 font-weight: bold;
-                @include padding(1, 0);
-                & p {
+                color: #989898;
+                @include padding(0, 0);
+                & > p {
                     max-width: $layout-post-single-width;
-                    font-size: $typographic-base-font-size * 1.6817;
+                    font-size: $typographic-base-font-size * 1.5;
                     margin-top: 0;
+                    color: #989898;
                     @include margin-bottom(1);
                     @include line-height(1.5);
                 }
             }
-        }
+        // }
         & a {
             text-decoration: underline;
         }
@@ -153,7 +155,7 @@
             font-size: $typographic-base-font-size * 1.125;
             @include line-height(1.125);
             @include margin-bottom(1.125);
-            & p {
+            & > p {
                 font-size: $typographic-base-font-size * 1.125;
                 @include line-height(1.125);
                 @include margin-bottom(1.125);
