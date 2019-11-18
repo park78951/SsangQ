@@ -4,7 +4,7 @@ date: '2019-11-17T12:23:22.000Z'
 layout: post
 draft: false
 path: '/posts/algorithm-two-dimensional-array-1'
-category: 'JAVASCRIPT'
+category: 'THE OTHERS'
 tags:
   - 'Algorithm'
   - 'Two Dimensionalal Array'

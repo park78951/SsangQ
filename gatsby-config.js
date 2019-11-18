@@ -31,7 +31,7 @@ module.exports = {
         path: '/categories/cs',
       },
       {
-        label: 'THE_OTHERS',
+        label: 'THE OTHERS',
         path: '/categories/the-others',
       },
       // {
