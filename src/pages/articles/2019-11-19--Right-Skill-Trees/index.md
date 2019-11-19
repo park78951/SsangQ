@@ -4,7 +4,7 @@ date: '2019-11-19T14:11:11.000Z'
 layout: post
 draft: false
 path: '/posts/algorithm-right-skill-trees'
-category: 'JAVASCRIPT'
+category: 'THE OTHERS'
 tags:
   - 'Programmers'
   - 'Algorithm'
