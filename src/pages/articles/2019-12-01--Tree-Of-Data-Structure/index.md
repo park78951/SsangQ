@@ -15,10 +15,10 @@ tags:
   - 'Javascript'
   - 'Front-end'
 
-description: [TIL] 자료구조인 Tree 구조에 대해 공부한 것을 정리하려고 한다.
+description: 자료구조인 Tree 구조에 대해 공부한 것을 정리하려고 한다.
 ---
 
-# Tree
+# [TIL] Tree
 
 트리 자료 구조는 자식 노드를 지닌 노드들로 구성된다. 일반적으로 DOM Tree에서 확인한 모양으로 가장 최상위에 `root node`를 갖고 있고 자식들이 아래로 마치 가지치기한 형태의 뻗어있다.
 차근차근 다양한 Tree 구조에 대해 정리해보겠다.
