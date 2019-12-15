@@ -1,0 +1,193 @@
+---
+title: Webpack 설정과 Boiler Plate
+date: '2019-12-10T21:19:33.000Z'
+layout: post
+draft: false
+path: '/posts/webpack/'
+category: 'JAVASCRIPT'
+tags:
+  - 'webpack'
+  - 'javascript'
+  - 'frontend'
+  - 'client'
+  - 'react'
+  - 'boiler plate'
+
+description: 계속해서 React를 쓰던 요즘, CRA가 아닌 Webpack 설정이 된 boiler plate를 만들어 놓고 계속 사용하면서 차츰 희미해져가는 Wepack의 설정들을 다시 되짚어보고자 한다.
+---
+
+# 웹팩으로
+
+처음 React를 사용할 때 CRA를 사용하기보다 Webpack을 공부해서 React 설정을 직접하는 것을 배우는 것이 좋다고하여 직접 설정해보기 시작했다. 그 때는 너무 복잡했던 Webpack에 익숙해지기가 너무 힘들었는데, 계속 options이나 plugin 등을 추가하고 에러를 고쳐보면서 Webpack을 분석하는 눈이 생겼고 Webpack의 기능과 추가한 플러그인들의 하는일이 무엇인지 알고 쓸 수 있어 너무 만족한다. 계속해서 CRA만 사용했다면 이러한 발전은 없었을 것이다.
+
+Webpack은 사용하면 사용할수록 다양한 효율적인 기능이 있고 아직도 사용해보지는 못했지만 알게되는 기능들이 개발의 효율을 높여준다고 느꼈다. 하지만 webpack을 사용하면서 의식적으로 생각해야할 점은 ***필요에 의한 사용*** 이라고 생각한다. 내가 당장 필요도 없는데 남이 쓰는 좋은 설정이라고 해서 무작정 추가하는 식의 접근 좋지 않다는 점을 생각하고 써야할 것이다. 이러한 이유때문에 좀 더 이론적인 부분도 다시 한 번 정리하고 싶었고, 사용 목적이나 자주 사용하는 부분의 특징들도 함께 정리하려고한다.
+
+# 웹팩이란?
+웹팩이란 **모듈 번들러(Module Bundler)**이다. 간단하게 말하면 웹 어플리케이션을 구성하는 자원들을 하나로 합쳐 새로운 결과물로 만드는 도구이다. 웹팩을 사용하면 일반적으로 bundle.js라는 하나의 javascirpt 파일을 생성하는데, 이 파일에는 내가 작성한 코드, 라이브러리, CSS와 HTML 등의 정보를 모두 하나로 함축해놨다고 보면 되겠다. (사실 너무 복잡하고 암호화같은 코드라서 정확하게 하나씩 찾아보진 못했다...)
+
+다시말해서, 웹팩에서 말하는 **모듈**의 개념은 위에서 언급한 바와 같이 웹 어플리케이션을 구성하는 모든 자원을 의미한다고 한다. (HTML, CSS, Javascript, Imgaes, Font 등) 그리고 내부적으로 이러한 모듈들의 의존성 그래프를 형성해 하나 이상의 번들 파일을 생성한다고 한다. (일반적으로 번들 파일 하나지만, 최적화를 위해 번들 파일을 나눠서 관리하기도 한다.)
+
+# 웹팩의 필요성?
+웹팩이 나온 배경에는 다음과 같은 이유가 있다고 한다.
+- 파일 단위의 자바스크립트 모듈 관리의 필요성
+- 웹 개발 작업 자동화 도구로서
+- 웹 어플리케이션의 빠른 로딩 속도와 높은 성능
+
+## 파일단위의 자바스크립트 모듈 관리의 필요성
+이러한 모듈관리는 전역변수를 관리하는데 큰 이점이 있다고 한다. HTML에서 각 js 파일을 모두 로드하는 것은 변수 중복문제에 부딪혀 코드가 많아질 수록 굉장히 힘들 수가 있다.
+
+하지만, HTML파일에서도 script tag의 `type='module`을 통해 파일단위 js파일을 관리할 수도 있다. 그러나 webpack을 통한 module bundling은 babel 등의 transpiling 도구를 함께 사용할 수 있다는 이점이 있고 성능적 측면에서도 webpack으로 번들링을 한 것이 프로젝트 규모가 커질수록 더 큰 이점이 있다고 한다. [모듈환경 병목현상 Report](https://docs.google.com/document/d/1ovo4PurT_1K4WFwN2MYmmgbLcr7v6DRQN67ESVA-wq0/pub)
+
+## 웹 개발 작업 자동화 도구로서
+내가 지금 사용하고 있는 `react-hot-loader`와 같은 자동 페이지 reloader tool과 다양한 압축 기능은 웹팩의 또다른 장점이라고 한다.
+
+## 웹 어플리케이션의 빠른 로딩 속도와 높은 성능
+Lazy Loading과 Code splitting, Tree Shaking과 같은 최적화 작업을 Webpack에서 지원하기 때문에 특히, SPA를 사용한다면 큰 이득이 될 수 있다.
+
+Lazy Loading은 말 그대로 어떤 자원을 필요할 때 서버로부터 받아오는 것이고, code splitting은 코드를 chunk 단위로 나눠서 관리하는 것이다. Tree Shaking은 번들링 과정에서 사용하지 않는 코드를 제거하는 최적화 과정이라고 할 수 있겠다.
+
+# 나의 React Boiler Plate의 Webpack 설정
+한창 CRA가 너무 편한데 왜 Webpack을 힘들게 설정해서 사용해야하는가? 라는 의문을 가졌던 적이 있을 무렵, 다양한 외국 블로그에서 CRA를 왜 사용안하는지 모르겠다는 논쟁을 접하기도 했다.
+
+하지만, 지금도 CRA는 최고의 Boiler Plate라고 생각한다. 초보자가 React를 처음 시작할 때 여러가지 설정들을 러닝커브 없이 React를 시작할 수 있으며, 중급 이상의 개발자가 사용할 때도 많은 수고를 덜어준다고 생각한다. 또한, 계속해서 업데이트를 해 호환되지 않던 문제도 많이 개선되었다.
+
+그래도 나는 Webpack을 직접 설정하고 싶다. 조금은 개발자 스러워(?)졌다고 해야할지는 모르겠으나, 지금은 내가 사용하는 것들이 최소한 작업을 위해 존재하는지를 알아야겠다는 기준이 생겼다.
+
+앞으로도 계속 업데이트하면서 React 개발에 사용할 나의 Boiler Plate 설정을 정리해보려고 한다.
+
+#### webpack.config.js
+```javascript
+module.exports = {
+  mode: 'development',
+  entry: ['react-hot-loader/patch', './src/index.js'],
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+    ]
+  },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: 'public/index.html'
+    }),
+    new CleanWebpackPlugin(['build']),
+  ]
+}
+```
+
+### mode
+기본 mode 설정은 `development`로 작성했다. 
+
+웹팩의 실행모드를 실행모드 설정 코드로 빌드과정에서 CLI나 `process.env.NODE_ENV`와 같은 추가 설정을 통해 모드를 지정할 수 있다. 추후 변경하기 전에 일단 작업에 사용할 목적으로 development 모드로 설정했다.
+
+실무에서는 dev.config나 production.config와 같이 개발 모드와 배포 모드를 따로 작성하기도 한다고 한다.
+
+### entry
+`entry`설정은 `react-hot-loader`와 module의 최상단 파일을 배열을 사용해 작성했다.
+
+`entry` 설정은 기본적으로 Root 파일, 즉 module의 최상단 js파일을 의미한다. 기본적으로는 어플리케이션을 동작시킬 수 있는 코드가 있는 파일을 명시해야한다.
+
+일반적으로 string과 array, object로 표현할 수 있는데, string으로는 단순한 진입점을 표현하고, 배열은 나의 boiler plate와 같은 react-hot-loader를 사용할 때 함께 사용하고, 객체는 진입점을 여러개 설정할 때 사용한다고 한다. (배열 사용의 경우가 약간 아리송 하지만 일반적으로 서로 의존성 없는 파일들을 연결하고 싶을 때 사용한다고 한다.)
+
+### output
+`output`은 bundle작업이 이뤄진 파일의 경로를 나타낸다.
+
+`path`는 말 그대로 경로를, filename은 파일의 이름을 나타낸다. 이후 build 과정을 거치면 경로에 해당하는 폴더가 생성되고 안에 webpack 작업물들이 생성된다. 일반적으로 폴더명은 dist를 많이 사용하지만, build가 나에겐 더욱 직관적이라고 생각되어 build를 사용하고 있다.
+
+`filename`은 일반적으로 bundle.js를 많이 사용한다. 나 역시 그 이름을 사용하고 있다. `filename`은 `[name].bundle.js`과 같이 entry 속성을 포함하는 이름, `[id].bundle.js`와 같은 웹팩 내부의 모듈 ID를 사용하는 방식도 있으며, code splitting이나 lazy loading으로 인해 번들 파일이 나눠지는 경우에는 `[hash].bundle.js`와 같은 방식의 이름을 많이 사용한다.
+
+### module
+module 속성은 loader를 의미한다. boiler plate로는 babel-loader 하나만 사용하고 있다.
+
+다른 옵션을 설정할 수 있지만, 일반적으로 사용하는 경우 위와같이 rules 속성의 배열에 사용할 loader를 적는다. `test`속성은 loader를 적용할 패턴이나 파일을 의미하고, `exclude`는 제외할 항목 또는 파일, `use`는 사용할 loader를 말한다. `use`가 배열로 이뤄진 것을 보면 알 수 있듯 다수의 로더를 넣을 수 있고, string 형태로도 작성할 수 있다. 일반적으로 loader의 적용 순서는 오른쪽에서 왼쪽으로, 아래에서 위로 적용되기 때문에 예를 들어 sass를 사용한다면, `sass-loader`를 `css-loader`보다 오른쪽 또는 밑에 적어야한다.
+
+<예시>
+```javascript
+module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: ['css-loader', 'sass-loader']
+    }
+  ]
+}
+```
+아래와 같은 옵션을 포함한 다수의 객체를 가진 배열 형태로도 use를 작성할 수 있다.
+```javascript
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: [
+        { loader: 'style-loader' },
+        {
+          loader: 'css-loader',
+          options: { modules: true }
+        },
+        { loader: 'sass-loader' }
+      ]
+    }
+  ]
+}
+```
+
+### resolve
+`resolve`는 module을 어떻게 처리할지에 대한 내용이 담겨있다고 한다. 굉장히 추상적인 만큼 다양한 설정이 들어갈 수 있다고 생각하는데, 일단 나의 boiler plate 설정은 `react-dom`을 `react-hot-loader`에서 제공하는 라이브러리로 실행시키겠다는 의미라고 보면 될 것 같다. react-hot-loader가 react v16.6+에서는 아직 완전히 호환되지 않아 이를 사용하는 것으로 알고있다.
+
+위의 설명과 상통하지만, 더욱 쉽게 설명하자면 resolve의 alias 속성을 통해 아래와 같이 작성하여 마치 node_modules 파일을 불러오듯 해당 경로의 파일들을 불러올 수 있게 해준다.
+
+```javascript
+module.exports = {
+  //...
+  resolve: {
+    alias: {
+      Utilities: path.resolve(__dirname, 'src/utilities/'),
+      Templates: path.resolve(__dirname, 'src/templates/')
+    }
+  }
+};
+```
+```javascript
+// previous
+import Utility from '../../utilities/utility';
+// with alias
+import Utility from 'Utilities/utility'; // 편해졌다.
+```
+아직 익숙하지 않아 사용하지는 않지만 이와 같은 방식도 추후 사용해보려고한다.
+
+### plugins
+마지막으로 `plugins`는 웹팩이 추가적인 일을 하도록 기능을 제공하는 속성이다. 로더는 단순히 transpiling의 의미를 갖고 있지만, `plugins`는 결과물을 변형시킨다는 차이가 있다. 
+
+나의 boiler plate에는 2가지 plugin을 추가했는데, 대부분 가장 기본적으로 사용하고 있다고 알고 있다. 그만큼 편하다.
+
+먼저, `HtmlWebPackPlugin`은 build 이후 자동으로 html 파일을 생성해주고 script 경로에까지 새로 bundle된 파일을 추가해주는 추가 작업을 수행하게 해준다. template 속성은 참조할 html 파일을 나타낸다.
+
+두번째로, `CleanWebpackPlugin`은 build할 때마다 build파일이 계속 추가되지 않도록 새로운 파일이 생성되기 전에 build 폴더 안의 파일들을 삭제해주는 작업을 수행한다.
+
+# 웹팩에 대한 생각
+
+웹팩이 좋다 안좋다라는 것을 말하기 보다는 웹팩이 어렵다 쉽다에 대한 생각을 적고싶다. 항상 개발을 하면서 느끼지만, 웹팩이나 다른 라이브러리를 사용하는 것은 항상 익숙함의 문제라고 생각한다. 위와 같이 처음 익혀야하는 웹팩의 속성들이 너무 많고 복잡하기에 처음부터 겁을 먹는 경우가 많다고 생각한다. 또한 그 용도를 모두 파악해 100% 사용할 수는 없기 때문에 가장 기본적인 사용방법과 기능에 익숙해지고 이를 조금씩 추가하면서 익히는 것이 중요하다고 생각한다. 지금의 나도 계속 익숙해지기 위해 노력중이다.
+
+무엇보다 가장 중요하게 생각하는 것은 내가 사용하고 있는 속성이 무슨 일을 하는지 반드시 알아야 한다고 생각한다.
+
+# 도움받은 문서
+
+책: [웹팩 핸드북](https://joshua1988.github.io/webpack-guide/concepts/plugin.html#plugin)
+공식사이트: [웹팩](https://webpack.js.org/)
+___
+
+> 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
+
+---
