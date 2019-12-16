@@ -7,7 +7,7 @@ module.exports = {
   subtitle: "Like Development\nLike Creation",
   copyright: '© All rights reserved.',
   disqusShortname: 'ssangq-1',
-  postsPerPage: 4,
+  postsPerPage: 6,
   googleAnalyticsId: 'UA-154589980-1',
   useKatex: false,
   menu: [
@@ -17,23 +17,23 @@ module.exports = {
     },
     {
       label: 'HTML-CSS',
-      path: '/categories/html-css',
+      path: '/category/html-css',
     },
     {
       label: 'JAVASCRIPT',
-      path: '/categories/javascript',
+      path: '/category/javascript',
     },
     {
       label: 'WEB',
-      path: '/categories/web',
+      path: '/category/web',
     },
     {
       label: 'CS',
-      path: '/categories/cs',
+      path: '/category/cs',
     },
     {
       label: 'THE OTHERS',
-      path: '/categories/the-others',
+      path: '/category/the-others',
     },
     // {
     //   label: 'About me',
@@ -45,14 +45,14 @@ module.exports = {
     photo: '/photo.jpg',
     bio: "A beginner of front-end developer\nWhat I've learend and thought",
     contacts: {
-      email: '',
+      email: 'park78951@gmail.com',
       facebook: '#',
       telegram: '#',
       twitter: '#',
-      github: '#',
+      github: 'park78951',
       rss: '',
       vkontakte: '',
-      linkedin: '#',
+      linkedin: 'in/sangkyu-park-856b6612b',
       instagram: '#',
       line: '',
       gitlab: '',
