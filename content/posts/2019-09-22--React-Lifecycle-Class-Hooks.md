@@ -73,7 +73,6 @@ lifecycle 에 대한 learning curve 를 크게 줄여준 것 같다. `componentD
 
 [ProgrammingWithMosh](https://programmingwithmosh.com/javascript/react-lifecycle-methods/)  
 [React 공식문서](https://ko.reactjs.org/docs/hooks-effect.html)
-___
 
 > 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 

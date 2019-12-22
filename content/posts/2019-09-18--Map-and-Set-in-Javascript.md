@@ -90,8 +90,6 @@ setEnt.next() // {value: undefined, done: true}
 [Maya shavin](https://medium.com/front-end-weekly/es6-map-vs-object-what-and-when-b80621932373)  
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map#%EC%84%A4%EB%AA%85)
 
-___
-
 > 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 
 

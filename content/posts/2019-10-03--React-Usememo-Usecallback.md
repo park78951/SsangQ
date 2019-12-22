@@ -158,8 +158,6 @@ useCallback을 사용하여 count1이나 count2 둘 중 하나의 state만 변�
 [TOAST UI](https://ui.toast.com/weekly-pick/ko_20190731/)  
 [Kent C. Dodds](https://kentcdodds.com/blog/usememo-and-usecallback)  
 
-___
-
 > 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 
 ---

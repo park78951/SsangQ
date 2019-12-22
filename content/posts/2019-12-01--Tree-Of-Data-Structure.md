@@ -231,8 +231,6 @@ BinaryTree.prototype.travserLevelOrder = function() {
 
 책: [자바스크립트로 하는 자료 구조와 알고리즘](http://www.acornpub.co.kr/book/javascript-data-algorithms)
  
-___
-
 > 공부한 내용을 정리하는 공간으로 학습 중 습득한 내용이 정확하지 않은 정보를 포함할 수 있어 추후 발견시 수정하도록 하겠습니다.
 
 ---
