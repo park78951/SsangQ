@@ -39,6 +39,20 @@ design에서 가장 고려했던 부분은 필수적인 기능을 포함하는 �
 3. 현재 페이지를 특정 색으로 표현하기
 4. 1 페이지 이전, 마지막 페이지 다음으로 이동하려 할 경우 화살표 버튼의 동작 막기
 
+## 재사용 가능한 UI를 만들기 위한 고민
+설계에서 난관에 봉착했던 부분은 어떻게 의존성을 낮출 수 있을까라는 부분이었다. 다른 곳에서도 재사용할 수 있는 UI를 만들고 싶었고, 그러기 위해서는 props를 얼마나 적절히 설계해야하는가가 중요하다고 생각했다. 그 중에서 고민을 했던 부분은 구현 중 설계를 수정했던 부분인 비동기 통신에 관한 부분이었다. **(이 부분은 어쩌면 아래의 설계 실패에 다뤄야 했을 수도 있다.)** 처음에는 단순히 비동기 데이터 통신을 진행하는 callback 함수를 넣으면 되겠다고 생각했지만, Global Store에 있는 유저 검색어 및 Filter Input과 Pagenation 자체에서 관리하는 page 정보가 데이터 통신에 필요한 정보였기 때문에 어떻게 전달할지 고민했다. 하지만, 완전히 재사용 가능한 UI를 만들고 싶어서 효율적이다라고 말하기는 힘들어도 현재 프로젝트 구조 (Redux와 Reduxs-saga 사용)에 맞는 방법으로 검색어 Input, filter Input 정보를 props로 전달하고 dispatch를 실행하는 callback 함수까지 props로 전달하는 방식으로 재사용 가능하도록 구현했다.
+
+```javascript
+const Pagination = ({ 
+  courtsPerPage, // 한 page당 court 정보 - 서버 요청시 필요
+  numbersOnList,  // Pagination UI에 보여줄 숫자 ex) < 1 2 3 4 5 > - 5, < 1 2 3 > - 3
+  totalCourts,  // 전체 court 정보 - 전체 pagination의 page 계산시 필요
+  clickHandler, // 데이터 통신을 위한 event hanlder
+  userInput, // 데이터 통신에 필요한 유저 검색어 Input
+  filterInput, // 데이터 통신에 필요한 유저 Filter Input
+}) => {
+```
+
 ## 설계의 실패에서 더욱 꼼꼼한 설계의 필요성을 느끼다
 
 기능을 구현하고 직접 UI를 동작해보면서 설계시에 고려하지 못했던 필요 기능들을 찾아내게 되었다.
