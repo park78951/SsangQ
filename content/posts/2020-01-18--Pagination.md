@@ -1,9 +1,9 @@
 ---
 title: 'Pagination UI를 직접 만들어보면서 배운점'
-date: '2019-01-18T23:57:23.000Z'
+date: '2020-01-18T23:57:23.000Z'
 template: 'post'
 draft: false
-slug: 'react-pagination-component'
+slug: 'react-pagination'
 category: 'JAVASCRIPT'
 tags:
   - 'React'
