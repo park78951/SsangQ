@@ -4,7 +4,7 @@ date: '2019-11-19T14:11:11.000Z'
 template: "post"
 draft: false
 slug: 'algorithm-right-skill-trees'
-category: 'THE OTHERS'
+category: 'ALGORITHM'
 tags:
   - 'Programmers'
   - 'Algorithm'

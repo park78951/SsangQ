@@ -32,6 +32,10 @@ module.exports = {
       path: '/category/cs',
     },
     {
+      label: 'ALGORITHM',
+      path: '/category/algorithm',
+    },
+    {
       label: 'THE OTHERS',
       path: '/category/the-others',
     },
