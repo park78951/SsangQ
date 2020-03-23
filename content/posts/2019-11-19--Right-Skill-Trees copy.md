@@ -29,7 +29,7 @@ description: 프로그래머스 알고리즘 문제를 풀고 이를 정리하�
 ## 생각한 풀이 방법
 객체에 skill 프로퍼티를 생성하고 반복문으로 skill tree들과 비교도 해보며 여러가지 시행착오를 겪었지만, 동료와 함께 풀면서 stack이나 queue를 사용하는 것이 어떤지 고민했고, queue를 사용해 하나씩 뽑아서 만약 skill tree에 있다면 그 선행 skill과 맞는지 비교하는 방법으로 풀었다.
 
-```
+```javascript
 function solution(skill, skill_trees) {
     let answer = 0;
 

@@ -42,7 +42,7 @@ Udemy 강좌를 보면서 학습했던 학습 코드를 예시로 간단히 정�
 
 ### Action
 Action을 예시코드로 확인해보려한다.
-```
+```javascript
 // Action Creator
 export const selectSong = (song) => {
   //.. any logic
@@ -57,7 +57,7 @@ export const selectSong = (song) => {
 일반적으로 action에서 받는 인자를 payload에 저장하면, payload는 reducer로 전달되어 상태 변경에 영향을 끼친다. payload는 변경된 상태를 저장하는 property 명으로 사용된다. 물론 인자를 받지 않도록 설계될 수도 있고, 직접 payload 값을 설정해 줄 수도 있다. (boolean) 같은 경우.
 
 ### Reducer
-```
+```javascript
 import { combineReducers } from 'redux';
 
 const songsReducer = () => {
@@ -93,7 +93,7 @@ export default combineReducers({
 ### Store
 이제 만든 Reducer를 바탕으로 Store를 만들어야한다.
 
-```
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; 
@@ -115,7 +115,7 @@ React와 관련된 코드가 많이 섞여있지만, redux와 react-redux와 관
 먼저, Provider Component의 경우는 react-redux에서 제공하는 API로 context API와 같은 역할을 한다. Component를 감싸 그 Component 포함 하위 Component에게 Store에 접근 할 수 있도록 제공하는 것이다. 이를 통해 하위 Component에서 store라는 props 명으로 접근할 수 있도록 설정했고, 실제로 Store를 만드는 것은 redux에서 제공하는 createStore라는 API에서 제공한다.
 
 createStore는 아래와 같이 이뤄져있다.
-```
+```javascript
 createStore(reducer, [preloadedState], [enhancer])
 ```
 
@@ -123,7 +123,7 @@ createStore(reducer, [preloadedState], [enhancer])
 
 ### Component에 적용
 
-```
+```javascript
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -153,7 +153,7 @@ export default connect(mapStateToProps)(SongDetail);
 
 위의 코드로 Component에 적용한 모습을 확인할 수 있다. 먼저 `connect()()` 함수의 역할과 구조가 굉장히 중요하다고 생각한다. 사용하는 문법은 아래와 같다.
 
-```
+```javascript
 function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)(component?)
 ```
 
@@ -165,7 +165,7 @@ function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)(c
 
 #### mapStateToProps
 1. 문법
-```
+```javascript
 mapStateToProps?: (state, ownProps?) => Object
 
 // state: Object
@@ -175,12 +175,12 @@ mapStateToProps?: (state, ownProps?) => Object
 먼저 state는 store에서 받은 state를 의미하고 ownProps는 상위 컴포넌트에서 받은 props를 의미한다. 이를 하나의 props로 전달한다. 아래 사용 예시를 확인하면 이해가 쉽다.
 
 - state를 store에서만 받을 때
-```
+```javascript
 const mapStateToProps = state => ({ todos: state.todos });
 ```
 
 - state를 store와 상위 컴포넌트에서 props로 받을 때
-```
+```javascript
 const mapStateToProps = (state, ownProps) => ({
   todo: state.todos[ownProps.id]
 });
@@ -192,7 +192,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 이 함수는 특정 이벤트나 어떤 상황에 따라 state를 바꿔주기 위한 함수이다.
 자세히 확인하자면, 먼저 문법은 아래와 같다.
-```
+```javascript
 mapDispatchToProps?: Object | (dispatch, ownProps?) => Object
 // dispatch: Function
 // ownProps?: Object
@@ -201,7 +201,7 @@ mapDispatchToProps?: Object | (dispatch, ownProps?) => Object
 이 또한 mapStateToProps 처럼 두개의 인자를 받는다. 첫 번째는 store에서 전달 받는 dispatch, 두 번째는 ownProps이다. 일반적으로 dispatch의 인자로 action 함수를 호출해 type과 새로운 state로 전달할 값을 넣어준다. 이를 기억하고 상황에 따라 connect에 전달 방법을 확인해보자.
 
 1. 아무것도 전달하지 않았을 때
-```
+```javascript
 // do not pass `mapDispatchToProps`
 connect()(MyComponent)
 connect(mapState)(MyComponent)
@@ -215,7 +215,7 @@ connect(
 단순히 null을 전달하면 default 값으로 dispatch를 전달 받는다. 그러면 아래와 같이 컴포넌트 내에서 dispatch를 사용해 직접 type과 payload를 전달하는 방법이 있다.
 
 [React Redux 예시](https://react-redux.js.org/6.x/using-react-redux/connect-mapdispatch#connect-dispatching-actions-with-mapdispatchtoprops)
-```
+```javascript
 function Counter({ count, dispatch }) {
   return (
     <div>
@@ -231,7 +231,7 @@ function Counter({ count, dispatch }) {
 2. connect의 두 번째 인자에 mapDispatchToProps를 전달
 일반적으로 action함수를 선언하고 이를 dispatch와 함께 사용한다고 앞서 언급한 바 있다. action 함수와 함께 사용하기 위해서는 mapDispatchToProps에서 dispatch를 받아 action과 결합해야 한다.
 
-```
+```javascript
 const mapDispatchToProps = dispatch => {
   return {
     // dispatching plain actions
@@ -245,7 +245,7 @@ const mapDispatchToProps = dispatch => {
 이러면 component에서 직접 props.increment, props.decrement로 접근 할 수 있으며 이를 사용해서 상태를 변경하도록 설정할 수 있다.
 만약 ownProps도 인자로 받는다면 아래와 같이 설정할 수 있다.
 
-```
+```javascript
 // binds on component re-rendering
 <button onClick={() => this.props.toggleTodo(this.props.todoId)} />
 
@@ -260,7 +260,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 위와 같이 일일히 설정해주기가 힘들고, 어차피 action 함수의 함수명을 그대로 사용할 것이라면, bindActionCreators API로 간단하게 mapDispatchToProps를 대체할 수 있다.
 
-```
+```javascript
 import { bindActionCreators } from 'redux'
 
 const increment = () => ({ type: 'INCREMENT' })
@@ -291,7 +291,7 @@ action이 하나라면 `bindActionCreators` 함수의 인자로 action 함수를
 세 번째 parameter로 최종 props를 어떻게 정희할 것인지에 대한 부분이다.
 만약 아무것도 넣지 않는다면 default로 `{ ...ownProps, ...stateProps, ...dispatchProps }`와 같이 정의한다.
 사용 문법은 아래와 같다.
-```
+```javascript
 mergeProps?: (stateProps, dispatchProps, ownProps) => Object
 ```
 

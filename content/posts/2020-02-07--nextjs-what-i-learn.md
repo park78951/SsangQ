@@ -36,7 +36,7 @@ Next.js는 간단하게 말하면 React의 Server Side Rendering(이하 SSR)을 
 
 `React-router-dom`에는 있었던 `<NavLink>` 컴포넌트가 Next.js에는 없었다. 구글링을 통해 해결방안을 찾아보면서 직접 Custom Link 컴포넌트를 만드는 방법이 가장 많았다. 그리고 그 검색 내용들을 참고해서 Custom Link 컴포넌트를 만들었다. 코드는 아래와 같다.
 
-```
+```javascript
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -73,7 +73,7 @@ Next.js에서 environment variable을 사용하기 위해서는 약간의 설정
 
 먼저 위의 두 패키지를 설치하고 `next.config.js`에 다음과 같이 작성한다.
 
-```
+```javascript
 const withImages = require('next-images');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');

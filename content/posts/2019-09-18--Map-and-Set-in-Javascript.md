@@ -43,7 +43,7 @@ Map의 특징을 일단 정리하자면,
 Set의 특징을 정리해보자면,
 1. 배열과 유사한 순회 가능한 객체이다.
 2. 배열처럼 value로만 이뤄져있지만, 값이 키와 동일하게 설정되어있다.
-```
+```javascript
 cosnt set = new Set(['a', 'b', 'c'])
 set.keys() // return {'a', 'b', 'c'}
 set.values() //return {'a', 'b', 'c'}
@@ -62,7 +62,7 @@ Set은 확실히 Map보다는 활용도가 높다고 생각했다. 최근 검색
 1. Map의 key에 해당하는 값과 Set의 값은 오로지 객체만 받을 수 있다.
 2. 자동적으로 Garbage Collection을 하여 사용하지 않는 참조는 모두 삭제된다.
 
-```
+```javascript
 const weakSet = new WeakSet([{a: 'a'}]);
 weakSet // return WeakSet {} : 참조가 없어 Garbage Collection 됨.
 ```
@@ -72,7 +72,7 @@ weakSet // return WeakSet {} : 참조가 없어 Garbage Collection 됨.
 위에 언급하지는 않았지만, Map과 Set 모두 entries라는 메소드로 모든 iterator 객체를 차례대로 순회할 수 있다.
 Set을 예로 들자면, 
 
-```
+```javascript
 const set = new Set(['a', 'b']); // return {"a", "b"}
 const setEnt = set.entries(); // return SetIterator 
 setEnt.next() // {value: ["a", "a"], done: false}

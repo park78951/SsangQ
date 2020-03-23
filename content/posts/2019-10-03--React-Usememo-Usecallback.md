@@ -27,7 +27,7 @@ Memoization이란 ***이전 값을 메모리에 저장해 동일한 계산의 �
 
 ### React.memo의 특징과 사용
 
-```
+```javascript
 const Welcome = ({ name }) => {
   return <h1>Hello { name }</h1>;
 };

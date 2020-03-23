@@ -24,7 +24,7 @@ Redux Thunk `redux-thunk`는 Redux의 미들웨어이며, 비동기를 처리하
 
 아래와 같이 action함수에서 비동기 처리를 하면 어떤 일이 발생할까?
 
-```
+```javascript
 export const fetchPosts = async () => {
   // Bad approach!!!
   const response = await jsonPlaceholder.get('/posts');
@@ -42,7 +42,7 @@ export const fetchPosts = async () => {
 
 처음에는 내가 return하는 것이 object인데... 대체 뭐지? 라고 생각했다. 아무리 봐도 제대로 준 것이 맞다. 특히 `await` 는 비동기에서 다음 작업이 진행될 동안 기다려주는 함수가 아닌가? Udemy에서 학습하면서 이에 대한 원인을 알 수 있었다. 아래 코드는 [babelio](https://babeljs.io/)을 통해 찾아낸 위의 fetchPosts 함수의 polyfill을 이해하기 쉽게 재 해석한 것이다.
 
-```
+```javascript
 // 아래 처럼 async await는 본래 fetch로 가져온 데이터를 먼저 리턴하고 
 //이후 본래 우리가 리턴하려던 값을 주기때문에 원하는 작동이 안된다.
 export const fetchPosts = async () => {
@@ -61,7 +61,7 @@ export const fetchPosts = async () => {
 위에서 볼 수 있 듯 `await` 부분인 jsonPlaceholder.get('/posts)를 먼저 return한다. return한 내용은 object가 아닌 특정 값이 먼저 return 될 것이다. 그리고 나서 `async` 함수는 의도했던 객체를 return 하려 하지만, 이미 처음 return한 내용으로 인해 오류가 발생하게 된다. 그렇기 때문에 `redux-thunk`를 사용해 dispatch를 action의 내부에서 받아 사용하도록 한다.
 
 - Action (Thunk 함수)
-```
+```javascript
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 // import action 으로 action 함수를 바다왔을 때
 
@@ -74,7 +74,7 @@ export const fetchPosts = () => async dispatch => {
 ```
 
 - Action을 사용하는 Component
-```
+```javascript
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
@@ -105,7 +105,7 @@ export default connect(
 ```
 
 - Root
-```
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

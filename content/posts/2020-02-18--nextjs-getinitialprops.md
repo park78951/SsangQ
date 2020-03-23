@@ -33,7 +33,7 @@ getInitialProps의 Work Flow는 아래와 같다. 아래의 설명에는 redux�
 
 1. 초기 웹 앱 또는 새로고침이나 URL을 직접 입력하여 웹 앱에 접근한다.
 2. page directory의 _app.js 컴포넌트의 getInitialProps가 실행된다. 모든 page에서 공통적으루 우선 실행되는 것이 _app.js이므로 _app.js의 getInitialProps 또한 먼저 실행된다.
-```
+```javascript
 _app.getInitialProps = async context => { // _app은 _app.js에 선언한 compnent 명
   const { ctx, Component} = context;
   let pageProps = {};

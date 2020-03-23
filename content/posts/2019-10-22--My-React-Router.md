@@ -34,7 +34,7 @@ React Router Dom Library를 사용하면서 React Router가 어떤식으로 동�
 
 현재 브라우저 Location (URL 내부의) 정보를 쪼개는 util 함수를 먼저 만든다.
 
-```
+```javascript
 import qs from 'querystringify';
 
 export function locationToRoute(location) {
@@ -52,7 +52,7 @@ export function locationToRoute(location) {
 
 이제 Router 정보를 전역에서 접근할 수 있도록 Context Api를 사용해 만든다.
 
-```
+```javascript
 import React from "react";
 import { createBrowserHistory } from "history";
 import { locationToRoute } from "./utils";
@@ -77,7 +77,7 @@ React Route의 주 기능을 담당하는 `Route`와 `Link` 컴포넌트를 만�
 그러면 useContext를 사용해 위에서 만든 Context의 데이터를 사용해 `Route`와 `Link` 컴포넌트를 만들어보자.
 
 ##### Router
-```
+```javascript
 import React from "react";
 import { RouterContext } from "./context";
 
@@ -97,7 +97,7 @@ export function Route({ path, children }) {
 Router 컴포넌트는 2개의 props를 받는데, `path와` `children`이다. `children`은 `Route`의 자식요소로 전달된 컴포넌트를 그대로 가져와서 렌더링 하기위함이고, `path`는 위에서 보다시피 Context로 가져온 route 정보에서 현재 path와 비교 후 인자로 들어온 path와 Context에 있는 path가 일치하지 않으면 새로운 뷰 (children이 갖고 있는)를 출력해준다.
 
 ##### Link
-```
+```javascript
 import React from "react";
 import { RouterContext, history } from "./context";
 
@@ -139,7 +139,7 @@ Link는 `to`, `onClick`, `children` props를 받는다. `to`는 URL을 변경할
 
 이렇게 각 컴포넌트에서 Context를 데이터를 사용하고 변경할 수 있으려면 `Provider` 컴포넌트가 필요하다. 이와 함께 추가적인 기능을 수행하는 `Router` 컴포넌트를 알아보자.
 
-```
+```javascript
 import React from "react";
 import { locationToRoute } from "./utils";
 import { history, RouterContext } from "./context";
@@ -202,7 +202,7 @@ Router는 먼저 2개의 props를 받는데, `routes list`와 404 에러처리�
 
 아래는 이 Costom Router를 사용한 코드이다.
 
-```
+```javascript
 export const routes = {
   home: {
     path: "/",
@@ -212,7 +212,7 @@ export const routes = {
   },
 };
 ```
-```
+```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 import {Router, Link, Route, history} from "./router";

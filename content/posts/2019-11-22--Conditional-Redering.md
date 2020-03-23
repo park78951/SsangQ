@@ -27,7 +27,7 @@ description: 프로젝트를 진행하면서 조건부 렌더링과 display none
 화살표 버튼으로 해당 필터 메뉴를 Toggle 했을 땐 필터 메뉴의 상위 컴포넌트를 display none으로 숨기다보니 그 하위 컴포넌트 및 요소는 `React.memo`의 영향을 받아 렌더링이 다시 일어나지 않는 것 같았지만 **(정확하지 않아 혹시 알게되면 추후 수정하도록 하겠습니다.)**, 버튼을 눌렀을 때는 해당 메뉴 컴포넌트 (Flag에 따라 변경되는)의 하위요소가 모두 다시 렌더링 되는 것을 확인할 수 있다. 이때 작성한 코드는 아래와 같다.
 
 - Filter Menu부분의 최상단 컴포넌트 [FilterDetail]
-```
+```javascript
 /*
 ...
 */
@@ -55,7 +55,7 @@ return (
 */
 ``` 
 - 하위컴포넌트 중 하나인 [Location] (모든 컴포넌트의 html 구조는 동일)
-```
+```javascript
 return (
     <Style.RecommendWrapper 
       activeBtn={ activeBtn } // activeBtn이 주제별 버튼의 Flag
@@ -101,13 +101,13 @@ React Dev Tools `Components` Tab에서도 Rendering이 이미 되어 있는 것�
 
 아래 그 문제의 코드를 확인할 수 있다.
 
-```
+```javascript
 <Location 
     activeBtn={ activeBtn }
     setFilterData={ setFilterData }
 />
 ```
-```
+```javascript
 return activeBtn === 'location' && (
     <div
       className='dropdown__menus'
@@ -132,7 +132,7 @@ return activeBtn === 'location' && (
 
 먼저 코드는 아래와 같이 useMemo와 Switch 문을 활용해 작성했다.
 
-```
+```javascript
 const filterRenderer = useMemo(() => {
     switch(activeBtn) { // 각 Menu 컴포넌트에 대한 Flag
       case 'location':

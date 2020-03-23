@@ -32,7 +32,7 @@ React의 Memoization, Tree 구조 등, 공부를 하면 할 수록 Data Structur
 
 알고리즘은 아래와 같다.
 
-```
+```javascript
 const partition = (array, left, right) => {
   const pivot = array[Math.floor((right + left) / 2)];
 

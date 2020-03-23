@@ -47,22 +47,22 @@ module.exports = {
   author: {
     name: 'Q',
     photo: '/photo.jpg',
-    bio: "A beginner of front-end developer\nWhat I've learend and thought",
+    bio: "Front-end developer\nWho wants to create\nvaluable things in society",
     contacts: {
       email: 'park78951@gmail.com',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
+      twitter: 'SangkyuPark4',
       github: 'park78951',
-      rss: '',
-      vkontakte: '',
       linkedin: 'in/sangkyu-park-856b6612b',
-      instagram: '#',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: '',
-      youtube: ''
+      // facebook: '#',
+      // telegram: '#',
+      // rss: '',
+      // vkontakte: '',
+      // instagram: '#',
+      // line: '',
+      // gitlab: '',
+      // weibo: '',
+      // codepen: '',
+      // youtube: ''
     }
   }
 };

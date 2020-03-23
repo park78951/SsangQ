@@ -24,7 +24,7 @@ description: "미션을 하면서 script태그를 body에 써야할지 head에 �
 
 ## async에 대해 알아보자.
 
-```
+```javascript
 <script async src="script.js">
 ```
 
@@ -32,7 +32,7 @@ description: "미션을 하면서 script태그를 body에 써야할지 head에 �
 
 ## 그렇다면 defer는?
 
-```
+```javascript
 <script defer src="script.js">
 ```
 
