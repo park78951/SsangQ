@@ -7,9 +7,9 @@
   margin: 0 auto;
 
   &__title {
-    font-size: $typographic-base-font-size * 2.3;
+    font-size: $typographic-base-font-size * 2.2;
     max-width: $layout-post-width;
-    font-weight: 600;
+    font-weight: bold;
     // text-align: center;
     margin: 0 auto;
     @include line-height(1.65);
@@ -19,9 +19,9 @@
     &:after {
       content: "";
       display: block;
-      background-color: #e1e1e1;
-      height: 0.2rem;
-      @include margin-top(1);
+      background-color: #C0C0C0;
+      height: 0.15rem;
+      @include margin-top(0.5);
     }
   }
 
@@ -58,7 +58,7 @@
     }
 
     & img {
-      max-width: 100%;
+      max-width: $layout-post-width;
     }
 
   }
@@ -70,10 +70,12 @@
     padding: 0;
 
     &__title {
-      font-size: $typographic-base-font-size * 2.5;
+      font-size: $typographic-base-font-size * 2.2;
+      font-weight: 800;
+      font-family: Catamaran;
       @include line-height(2.25);
-      @include margin-top(2.25);
-      @include margin-bottom(1.5)
+      @include margin-top(5);
+      @include margin-bottom(1)
     }
 
     &__body {

@@ -25,32 +25,40 @@ h4,
 h5,
 h6 {
   font-family: $typographic-font-family;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 h1 {
-  font-size: $typographic-base-font-size * 2.3;
+  font-size: $typographic-base-font-size * 2;
+  font-family: Catamaran;
+  font-weight: 800;
   @include line-height(2);
-  @include margin-top(4);
+  @include margin-top(2);
   @include margin-bottom(1);
 }
 
 h2 {
-  font-size: $typographic-base-font-size * 1.6875;
+  font-size: $typographic-base-font-size * 1.7;
+  font-family: Catamaran;
+  font-weight: 800;
   @include line-height(1.5);
-  @include margin-top(2);
+  @include margin-top(1.7);
   @include margin-bottom(.5);
 }
 
 h3 {
-  font-size: $typographic-base-font-size * 1.375;
+  font-size: $typographic-base-font-size * 1.4;
+  font-family: Catamaran;
+  font-weight: 800;
   @include line-height(1);
-  @include margin-top(2);
+  @include margin-top(1.5);
   @include margin-bottom(.5);
 }
 
 h4 {
-  font-size: $typographic-base-font-size * 1.2;
+  font-size: $typographic-base-font-size * 1.235;
+  font-family: Catamaran;
+  font-weight: 800;
   @include line-height(1);
   @include margin-top(1.5);
   @include margin-bottom(.5);
@@ -58,6 +66,7 @@ h4 {
 
 h5 {
   font-size: $typographic-base-font-size;
+  font-family: Catamaran;
   @include line-height(1);
   @include margin-top(2.5);
   @include margin-bottom(.5);
@@ -65,6 +74,7 @@ h5 {
 
 h6 {
   font-size: $typographic-base-font-size;
+  font-family: Catamaran;
   @include line-height(1);
   @include margin-top(2.5);
   @include margin-bottom(.5);

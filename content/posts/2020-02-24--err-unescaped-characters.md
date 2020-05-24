@@ -1,5 +1,5 @@
 ---
-title: 'Data 요청 중에 발생한 [ERR_UNESCAPED_CHARACTERS]에러'
+title: 'Error: [ERR_UNESCAPED_CHARACTERS]'
 date: '2020-02-24T17:32:12.000Z'
 template: 'post'
 draft: false
